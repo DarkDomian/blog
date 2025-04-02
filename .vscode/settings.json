@@ -1,5 +1,14 @@
 {
     "files.associations": {
-        "*.css": "tailwindcss",
+        "*.css": "tailwindcss"
     },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "[astro]": {
+        "editor.defaultFormatter": "astro-build.astro-vscode"
+    },
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "astro"]
 }
