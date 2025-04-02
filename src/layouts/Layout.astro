@@ -2,8 +2,7 @@
 const { pageTitle } = Astro.props;
 
 import Footer from "../components/Footer.astro"
-import Navigation from "../components/Navigation.astro";
-import Hamburger from "../components/Hamburger.astro"
+import Header from "../components/Header.astro";
 
 const skillColor = "navy";
 ---
@@ -17,12 +16,7 @@ const skillColor = "navy";
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<header>
-			<nav>
-				<Hamburger />
-				<Navigation />
-			</nav>
-		</header>
+		<Header />
 		<slot />
 		<Footer />
 		<script>
@@ -48,4 +42,13 @@ const skillColor = "navy";
     color: var(--skillColor);
     font-weight: bold;
   }
+
+  html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
 </style>

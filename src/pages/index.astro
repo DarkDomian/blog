@@ -1,8 +1,11 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Layout from '../layouts/Layout.astro';
----
+import { getCollection } from 'astro:content';
 
-<Layout pageTitle="main page">
-	<h1>My Astro Site</h1>
+import Layout from '../layouts/Layout.astro';
+import Greeting from '../components/Greeting';
+const pageTitle = "Home Page";
+---
+<Layout pageTitle={pageTitle}>
+  <h2>My awesome blog subtitle</h2>
+  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 </Layout>
