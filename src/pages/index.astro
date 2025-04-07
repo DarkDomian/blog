@@ -4,9 +4,17 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Greeting from '../components/Greeting';
 const pageTitle = 'Home Page';
+
+import '../styles/global.css';
 ---
 
 <Layout pageTitle={pageTitle}>
-    <h2>My awesome blog subtitle</h2>
+    <h2 class="animated-link">My awesome blog subtitle</h2>
+    <a class="animated-link">common link</a>
+    <div
+        class="relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+    >
+        just regular div
+    </div>
     <Greeting client:load messages={['Hej', 'Hallo', 'Hola', 'Habari']} />
 </Layout>
