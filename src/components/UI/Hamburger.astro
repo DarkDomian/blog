@@ -1,9 +1,78 @@
 ---
+export interface Props {
+    size?: string;
+    class?: string;
+}
 
+const { size = '40px', class: className } = Astro.props;
+const label = 'Toggle menu';
 ---
 
-<div class="hamburger">
+<button class:list={['hamburger', className]} aria-label={label} aria-expanded="false">
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
-</div>
+</button>
+
+<!-- writen with AI, probably may have issue -->
+<style define:vars={{ size }}>
+    .hamburger {
+        --thickness: 4px;
+        --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        width: var(--size);
+        height: var(--size);
+        min-width: var(--size);
+        min-height: var(--size);
+        max-width: var(--size);
+        max-height: var(--size);
+
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        padding: calc(var(--size) * 0.15);
+        box-sizing: border-box;
+    }
+    .line {
+        position: absolute;
+        width: 70%;
+        height: var(--thickness);
+        background: currentColor;
+        border-radius: calc(var(--thickness) / 2);
+        left: 15%;
+        transition: var(--transition);
+        transform-origin: center;
+    }
+
+    .line:nth-child(1) {
+        top: 25%;
+    }
+    .line:nth-child(2) {
+        top: 50%;
+    }
+    .line:nth-child(3) {
+        top: 75%;
+    }
+
+    /* Active state animations */
+    .hamburger:global(.active) .line:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+        width: 70%;
+    }
+    .hamburger:global(.active) .line:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    .hamburger:global(.active) .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+        width: 70%;
+    }
+</style>
+
+<script is:inline>
+    document.querySelector('.hamburger').addEventListener('click', function () {
+        this.classList.toggle('active');
+        this.setAttribute('aria-expanded', this.classList.contains('active'));
+    });
+</script>

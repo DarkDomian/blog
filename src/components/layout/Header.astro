@@ -7,19 +7,19 @@ import { SITE_TITLE } from '../../consts';
 ---
 
 <header
-    class="m-0 px-[4em] py-0 shadow-primary/5 shadow-default dark:shadow-secondary/5 bg-light-50 dark:bg-dark-600"
+    class="m-0 px-2 md:px-[4em] py-0 shadow-primary/5 shadow-default dark:shadow-secondary/5 bg-light-50 dark:bg-dark-600"
 >
     <nav class="flex items-center justify-between">
         <a href="/">
             <span class="sr-only">Return to Home page</span>
-            {SITE_TITLE}
+            <b>{SITE_TITLE}</b>
             <!-- <HeaderLogo
                 className="fill-dark hover:fill-dark-300 hover:dark:fill-light-50 dark:fill-light-300 h-full transition-all duration-300"
                 size="40px"
                 alt="Demian Domozhirov logo"
             /> -->
         </a>
-        <div class="flex flex-row items-center relative group gap-1">
+        <div class="nav-links flex flex-row items-center relative group gap-1">
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/blog">Blog</HeaderLink>
             <HeaderLink href="/about">About</HeaderLink>
@@ -27,28 +27,62 @@ import { SITE_TITLE } from '../../consts';
             <HeaderLink href="/projects">Projects</HeaderLink>
         </div>
         <div class="social-links gap-2 hidden md:flex">
-            <a href="https://github.com/darkdomian" target="_blank">
-                <span class="sr-only">Go to Demian's GitHub profile</span>
-                <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-                    ><path
-                        fill="currentColor"
-                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-                    ></path></svg
-                >
-            </a>
             <ThemeIcon />
         </div>
-        <!-- <Hamburger /> -->
+        <Hamburger size="40px" class="text-dark-900 dark:text-light md:hidden" />
     </nav>
 </header>
 <style>
+    @reference "../../styles/global.css";
     nav a {
-        padding: 1em 0.5em;
-        color: var(--black);
-        border-bottom: 4px solid transparent;
-        text-decoration: none;
+        @apply px-2 py-4 text-dark-900 dark:text-light no-underline border-b-4 border-b-transparent border-solid;
     }
     nav a.active {
-        border-bottom-color: var(--color-primary);
+        @apply border-b-4 border-primary dark:border-secondary;
+    }
+
+    /* nav styles */
+
+    .nav-links {
+        width: 100%;
+        top: 5rem;
+        left: 48px;
+        background-color: #ff9776;
+        display: none;
+        margin: 0;
+    }
+
+    .nav-links a {
+        display: block;
+        text-align: center;
+        padding: 10px 0;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+        background-color: #ff9776;
+    }
+
+    .expanded {
+        display: unset;
+    }
+
+    @media screen and (min-width: 48rem) {
+        .nav-links {
+            margin-left: 5em;
+            display: block;
+            position: static;
+            width: auto;
+            background: none;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 15px 20px;
+        }
     }
 </style>
