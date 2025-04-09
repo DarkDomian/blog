@@ -74,5 +74,8 @@ const label = 'Toggle menu';
     document.querySelector('.hamburger').addEventListener('click', function () {
         this.classList.toggle('active');
         this.setAttribute('aria-expanded', this.classList.contains('active'));
+
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('expanded');
     });
 </script>

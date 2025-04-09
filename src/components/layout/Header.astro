@@ -7,82 +7,46 @@ import { SITE_TITLE } from '../../consts';
 ---
 
 <header
-    class="m-0 px-2 md:px-[4em] py-0 shadow-primary/5 shadow-default dark:shadow-secondary/5 bg-light-50 dark:bg-dark-600"
+    class="m-0 px-2 md:px-8 lg:px-[4em] py-0 shadow-primary/5 shadow-default dark:shadow-secondary/5 bg-light-50 dark:bg-dark-600"
 >
-    <nav class="flex items-center justify-between">
-        <a href="/">
-            <span class="sr-only">Return to Home page</span>
-            <b>{SITE_TITLE}</b>
-            <!-- <HeaderLogo
-                className="fill-dark hover:fill-dark-300 hover:dark:fill-light-50 dark:fill-light-300 h-full transition-all duration-300"
-                size="40px"
-                alt="Demian Domozhirov logo"
-            /> -->
-        </a>
-        <div class="nav-links flex flex-row items-center relative group gap-1">
+    <nav class="flex items-center justify-between flex-col md:flex-row">
+        <div class="flex items-center justify-between w-full md:w-auto">
+            <a href="/">
+                <span class="sr-only">Return to Home page</span>
+                <b>{SITE_TITLE}</b>
+                <!-- <HeaderLogo
+                    className="fill-dark hover:fill-dark-300 hover:dark:fill-light-50 dark:fill-light-300 h-full transition-all duration-300"
+                    size="40px"
+                    alt="Demian Domozhirov logo"
+                /> -->
+            </a>
+            <div class="gap-2 flex md:hidden">
+                <ThemeIcon class="flex md:hidden" />
+                <Hamburger size="40px" class="text-dark-900 dark:text-light md:hidden" />
+            </div>
+        </div>
+        <div class="nav-links hidden md:flex md:flex-row items-center relative group gap-1">
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/blog">Blog</HeaderLink>
             <HeaderLink href="/about">About</HeaderLink>
             <HeaderLink href="/tags">Tags</HeaderLink>
             <HeaderLink href="/projects">Projects</HeaderLink>
         </div>
-        <div class="social-links gap-2 hidden md:flex">
-            <ThemeIcon />
+        <div class="hidden md:flex">
+            <ThemeIcon class="hidden md:flex" />
         </div>
-        <Hamburger size="40px" class="text-dark-900 dark:text-light md:hidden" />
     </nav>
 </header>
 <style>
     @reference "../../styles/global.css";
     nav a {
-        @apply px-2 py-4 text-dark-900 dark:text-light no-underline border-b-4 border-b-transparent border-solid;
+        @apply px-2 py-4 text-dark-900 dark:text-light no-underline md:border-b-4 md:border-b-transparent md:border-solid;
     }
     nav a.active {
-        @apply border-b-4 border-primary dark:border-secondary;
-    }
-
-    /* nav styles */
-
-    .nav-links {
-        width: 100%;
-        top: 5rem;
-        left: 48px;
-        background-color: #ff9776;
-        display: none;
-        margin: 0;
-    }
-
-    .nav-links a {
-        display: block;
-        text-align: center;
-        padding: 10px 0;
-        text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus {
-        background-color: #ff9776;
+        @apply md:border-b-4 md:border-primary md:dark:border-secondary;
     }
 
     .expanded {
-        display: unset;
-    }
-
-    @media screen and (min-width: 48rem) {
-        .nav-links {
-            margin-left: 5em;
-            display: block;
-            position: static;
-            width: auto;
-            background: none;
-        }
-
-        .nav-links a {
-            display: inline-block;
-            padding: 15px 20px;
-        }
+        @apply flex-col flex;
     }
 </style>
